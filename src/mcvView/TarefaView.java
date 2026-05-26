@@ -23,6 +23,8 @@ public class TarefaView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taLista = new javax.swing.JTextArea();
         jbListar = new javax.swing.JButton();
+        jbConcluir = new javax.swing.JButton();
+        jbRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tarefa");
@@ -49,8 +51,8 @@ public class TarefaView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(txfTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jbAdicionar)
                 .addContainerGap())
         );
@@ -60,7 +62,7 @@ public class TarefaView extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAdicionar))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
@@ -68,6 +70,7 @@ public class TarefaView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Tarefas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 2, 18), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        taLista.setEditable(false);
         taLista.setColumns(20);
         taLista.setRows(5);
         jScrollPane1.setViewportView(taLista);
@@ -76,6 +79,20 @@ public class TarefaView extends javax.swing.JFrame {
         jbListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbListarActionPerformed(evt);
+            }
+        });
+
+        jbConcluir.setText("Concluir");
+        jbConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConcluirActionPerformed(evt);
+            }
+        });
+
+        jbRemover.setText("Remover");
+        jbRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRemoverActionPerformed(evt);
             }
         });
 
@@ -89,6 +106,10 @@ public class TarefaView extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbRemover)
+                .addGap(18, 18, 18)
+                .addComponent(jbConcluir)
+                .addGap(18, 18, 18)
                 .addComponent(jbListar)
                 .addGap(30, 30, 30))
         );
@@ -97,7 +118,10 @@ public class TarefaView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbListar)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbListar)
+                    .addComponent(jbConcluir)
+                    .addComponent(jbRemover))
                 .addGap(0, 17, Short.MAX_VALUE))
         );
 
@@ -120,6 +144,7 @@ public class TarefaView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Adicionar
     private void jbAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarActionPerformed
         
         String nome = txfTarefa.getText();
@@ -130,24 +155,32 @@ public class TarefaView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbAdicionarActionPerformed
 
+    //Listar
     private void jbListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarActionPerformed
-        
+       
         taLista.setText("");
         
         //Percorrer
         for(TarefaModel t : control.listar()){
         taLista.append(t.toString());
-        taLista.append("n");
+        taLista.append("\n");
+    }   
         
     }//GEN-LAST:event_jbListarActionPerformed
     
+    //Concluir
+    private void jbConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConcluirActionPerformed
+        
+        
+    }//GEN-LAST:event_jbConcluirActionPerformed
+    //Remover
+    private void jbRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoverActionPerformed
+        
+        
+    }//GEN-LAST:event_jbRemoverActionPerformed
+    
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -180,7 +213,9 @@ public class TarefaView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAdicionar;
+    private javax.swing.JButton jbConcluir;
     private javax.swing.JButton jbListar;
+    private javax.swing.JButton jbRemover;
     private javax.swing.JTextArea taLista;
     private javax.swing.JTextField txfTarefa;
     // End of variables declaration//GEN-END:variables
