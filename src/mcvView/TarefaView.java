@@ -19,6 +19,7 @@ public class TarefaView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txfTarefa = new javax.swing.JTextField();
         jbAdicionar = new javax.swing.JButton();
+        jlQuantidade = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taLista = new javax.swing.JTextArea();
@@ -43,6 +44,9 @@ public class TarefaView extends javax.swing.JFrame {
             }
         });
 
+        jlQuantidade.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        jlQuantidade.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -55,6 +59,10 @@ public class TarefaView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jbAdicionar)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jlQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +72,9 @@ public class TarefaView extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAdicionar))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jlQuantidade)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -122,7 +132,7 @@ public class TarefaView extends javax.swing.JFrame {
                     .addComponent(jbListar)
                     .addComponent(jbConcluir)
                     .addComponent(jbRemover))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,8 +161,6 @@ public class TarefaView extends javax.swing.JFrame {
         
         control.adicionar(nome);
         
-        JOptionPane.showMessageDialog(null, "Tarefa Concluida");
-        
     }//GEN-LAST:event_jbAdicionarActionPerformed
 
     //Listar
@@ -171,12 +179,25 @@ public class TarefaView extends javax.swing.JFrame {
     //Concluir
     private void jbConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConcluirActionPerformed
         
+        String indiceTexto = JOptionPane.showInputDialog("Digite o indice");
+        
+        int indice = Integer.parseInt(indiceTexto);
+        control.concluir(indice);
+        
+        jbListarActionPerformed(null);
         
     }//GEN-LAST:event_jbConcluirActionPerformed
     //Remover
     private void jbRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoverActionPerformed
         
+        String indiceTexto = JOptionPane.showInputDialog("digite o indice");
         
+        int indice = Integer.parseInt(indiceTexto);
+        control.remover(indice);
+        
+        jlQuantidade.setText("Total de Tarefas: " + control.quantidade());
+        
+        jbListarActionPerformed(null);
     }//GEN-LAST:event_jbRemoverActionPerformed
     
 
@@ -216,6 +237,7 @@ public class TarefaView extends javax.swing.JFrame {
     private javax.swing.JButton jbConcluir;
     private javax.swing.JButton jbListar;
     private javax.swing.JButton jbRemover;
+    private javax.swing.JLabel jlQuantidade;
     private javax.swing.JTextArea taLista;
     private javax.swing.JTextField txfTarefa;
     // End of variables declaration//GEN-END:variables

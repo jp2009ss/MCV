@@ -31,7 +31,15 @@ public class TarefaModel {
 
     @Override
     public String toString() {
-        return "TarefaModel{" + "tarefa=" + tarefa + ", concluida=" + concluida + '}';
+        
+        String status;
+        
+        if(concluida){
+            status = "Concluida";
+        }else{
+            status = "Pendente";
+        }
+        
+        return tarefa + "("+ status + ")";
     }
-
 }
