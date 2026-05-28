@@ -55,14 +55,14 @@ public class TarefaView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addComponent(txfTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(txfTarefa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbAdicionar)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(jlQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,6 +172,9 @@ public class TarefaView extends javax.swing.JFrame {
         for(TarefaModel t : control.listar()){
         taLista.append(t.toString());
         taLista.append("\n");
+        
+        jlQuantidade.setText("Total de Tarefas: " + control.quantidade());
+        
     }   
         
     }//GEN-LAST:event_jbListarActionPerformed
@@ -194,8 +197,6 @@ public class TarefaView extends javax.swing.JFrame {
         
         int indice = Integer.parseInt(indiceTexto);
         control.remover(indice);
-        
-        jlQuantidade.setText("Total de Tarefas: " + control.quantidade());
         
         jbListarActionPerformed(null);
     }//GEN-LAST:event_jbRemoverActionPerformed

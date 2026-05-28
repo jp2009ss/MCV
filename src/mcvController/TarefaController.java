@@ -8,27 +8,27 @@ public class TarefaController {
     //Lista Tarefas
     private ArrayList <TarefaModel> lista = new ArrayList<>();
     
-    //Adicionar 
-    public void adicionar (String nome){
-        
-        TarefaModel tarefa = new TarefaModel(nome); 
-       
-        try{
-            for(TarefaModel t: lista){
+   public void adicionar(String nome) {
 
-                if(lista.get(0).toString()==nome){
-                    JOptionPane.showMessageDialog(null, "Tarefa ja Existente");
+    // 1. Verificar se está vazio
+    if (nome == null || nome.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Digite um nome para a tarefa!");
+        return;
+    }
 
-                }else{
-            lista.add(tarefa);
-            JOptionPane.showMessageDialog(null, "Tarefa Cadastrada");
-        } 
-            }
-        }catch(Error e){
-        
-        JOptionPane.showMessageDialog(null,"BOA NOITE");
+    // 2. Verificar se já existe (ANTES de adicionar)
+    for (TarefaModel t : lista) {
+        if (t.getTarefa().equalsIgnoreCase(nome.trim())) {
+            JOptionPane.showMessageDialog(null, "Tarefa já existente!");
+            return;
         }
     }
+
+    // 3. Só adiciona se passou nas verificações acima
+    TarefaModel tarefa = new TarefaModel(nome.trim());
+    lista.add(tarefa);
+    JOptionPane.showMessageDialog(null, "Tarefa cadastrada!");
+}
     
     //Listar
     public ArrayList<TarefaModel> listar(){
