@@ -37,6 +37,8 @@ public class TarefaView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nova tarefa");
 
+        txfTarefa.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+
         jbAdicionar.setText("Adicionar");
         jbAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,12 +69,15 @@ public class TarefaView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbAdicionar))
-                .addGap(31, 31, 31)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jbAdicionar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(txfTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jlQuantidade)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -132,7 +137,7 @@ public class TarefaView extends javax.swing.JFrame {
                     .addComponent(jbListar)
                     .addComponent(jbConcluir)
                     .addComponent(jbRemover))
-                .addGap(0, 33, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,6 +166,8 @@ public class TarefaView extends javax.swing.JFrame {
         
         control.adicionar(nome);
         
+         jlQuantidade.setText("Total de Tarefas: " + control.quantidade());
+        
     }//GEN-LAST:event_jbAdicionarActionPerformed
 
     //Listar
@@ -173,7 +180,6 @@ public class TarefaView extends javax.swing.JFrame {
         taLista.append(t.toString());
         taLista.append("\n");
         
-        jlQuantidade.setText("Total de Tarefas: " + control.quantidade());
         
     }   
         
